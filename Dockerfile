@@ -1,3 +1,6 @@
 FROM v2fly/v2fly-core:v5.33.0
 
-WORKDIR /app
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
