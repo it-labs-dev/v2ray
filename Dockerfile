@@ -1,6 +1,11 @@
 FROM v2fly/v2fly-core:v5.33.0
 
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+WORKDIR /app
+CMD ["/bin/ash"]
 
-ENTRYPOINT ["/entrypoint.sh"]
+COPY ./entrypoint.sh /usr/bin/entrypoint.sh
+
+RUN chmod +x /usr/bin/entrypoint.sh && \
+    chmod 755 /usr/bin/entrypoint.sh
+
+ENTRYPOINT ["/usr/bin/entrypoint.sh"]
